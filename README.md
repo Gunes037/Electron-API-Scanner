@@ -1,7 +1,7 @@
-# 🛡️ Electron API Key Scanner (Statik Analiz Otomasyonu)
+# 🛡️ Electron API Key Scanner (Static Analysis Automation)
 
 <p align="center">
-  <img src="https://images.seeklogo.com/logo-png/61/1/istinye-universitesi-logo-png_seeklogo-610039.png" alt="İstinye Üniversitesi Logo" width="200">
+  <img src="https://images.seeklogo.com/logo-png/61/1/istinye-universitesi-logo-png_seeklogo-610039.png" alt="Istinye University Logo" width="200">
 </p>
 
 <p align="center">
@@ -12,41 +12,42 @@
 
 ---
 
-## 🎓 Akademik Bilgiler
-* **Üniversite:** İstinye Üniversitesi (İSÜ)
-* **Ders:** Tersine Mühendislik (Reverse Engineering)
-* **Eğitmen:** Keyvan Arasteh
-* **Proje Konusu:** 28. API Key Leakage in Electron
-* **Öğrenci:** Güneş Bingül (2320191055)
+## 🎓 Academic Information
+* **University:** Istinye University (ISU)
+* **Course:** Reverse Engineering
+* **Instructor:** Keyvan Arasteh
+* **Project Title:** 28. API Key Leakage in Electron
+* **Student:** Güneş Bingül (2320191055)
 
 ---
 
-## 📖 İçindekiler
-1. [Proje Hakkında](#-proje-hakkında)
-2. [Kullanılan Teknolojiler](#-kullanılan-teknolojiler)
-3. [Yazılım Mimarisi](#-yazılım-mimarisi)
-4. [Kurulum ve Kullanım](#-kurulum-ve-kullanım)
-5. [Güvenlik Notu](#-güvenlik-notu)
+## 📖 Table of Contents
+1. [About the Project](#-about-the-project)
+2. [Key Features](#-key-features)
+3. [Software Architecture](#-software-architecture)
+4. [Installation & Usage](#-installation--usage)
+5. [Security Best Practices](#-security-best-practices)
 
 ---
 
-## ℹ️ Proje Hakkında
-Bu proje, Electron tabanlı masaüstü uygulamalarının kaynak kodlarındaki sızıntıları tespit etmek için geliştirilmiş bir güvenlik otomasyonudur. Uygulama, `.asar` paketlerini otomatik olarak açar ve **AWS/Google Cloud API** anahtarları gibi hassas verileri Regex (Düzenli İfadeler) kullanarak tarar.
+## ℹ️ About the Project
+This project is a security automation tool designed to audit Electron-based desktop applications for sensitive data exposure. Since Electron apps bundle their source code within `.asar` packages, they often contain hardcoded credentials. This tool automates the extraction and scanning process to identify leaked **AWS and Google Cloud API keys** using optimized Regular Expressions (Regex).
 
-## 🛠️ Kullanılan Teknolojiler
-* **Python:** Dosya sistemi yönetimi ve analiz motoru.
-* **Regex:** Spesifik anahtar desenlerini yakalamak için optimize edilmiş kalıplar.
-* **Asar CLI:** Node.js tabanlı paket açma aracı.
+## ✨ Key Features
+* **Automated Extraction:** Backend extraction of `.asar` files without manual terminal overhead.
+* **Deep Scanning:** Recursive directory traversal to scan `.js`, `.json`, and `.html` files.
+* **Regex Engine:** Specialized patterns to detect high-entropy keys (AWS AKIA and Google AIza).
+* **Cleanup:** Automatic temporary directory wiping after analysis to maintain disk integrity.
 
-## 🏗️ Yazılım Mimarisi (Architectural Separation)
-Hocamızın beklentileri doğrultusunda, proje monolitik yapıdan kurtarılarak modüler hale getirilmiştir:
-* **`scanner_engine.py`:** Regex kurallarını ve tarama mantığını barındıran çekirdek modül.
-* **`extractor_utils.py`:** Dosya çıkarma ve temizleme işlemlerini yapan yardımcı araçlar.
-* **`main.py`:** Uygulamanın giriş noktası ve iş akış yönetimi.
+## 🏗️ Software Architecture
+To ensure high code quality and satisfy academic requirements, the project has been refactored from a monolithic script into modular components:
+* **`scanner_engine.py`:** Core logic containing regex rules and the scanning algorithm.
+* **`extractor_utils.py`:** Utility module for ASAR extraction and directory cleanup.
+* **`main.py`:** Main entry point handling the execution flow and user input.
 
-## 🚀 Kurulum ve Kullanım
+## 🚀 Installation & Usage
 
-### 1. Bağımlılıkların Kurulması
-Sisteminizde Node.js kurulu olmalıdır. Ardından `asar` paketini kurun:
+### 1. Requirements
+Ensure you have Node.js and Python 3.x installed. Install the global `asar` dependency:
 ```bash
 npm install -g asar
