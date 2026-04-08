@@ -1,0 +1,2 @@
+# No external libraries needed (using standard libraries)
+# Only 'asar' CLI is required globally via npm
