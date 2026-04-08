@@ -1,0 +1,9 @@
+name: Check Code
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Python Check
+        run: python -m py_compile main.py scanner_engine.py extractor_utils.py
